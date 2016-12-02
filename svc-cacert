@@ -26,7 +26,7 @@
 # include SMF 
 . /lib/svc/share/smf_include.sh
 
-# our veriables
+# our variables
 typeset curlCA
 typeset cert
 typeset hashval
