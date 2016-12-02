@@ -18,7 +18,7 @@ svc-cacert \- generates Root CA Certificate entries for openssl and curl
 .LP
 \fBsvc-cacert\fR will be executed during systemboot by the \fBsmf\fR(5) service 
 \fBsvc:/system/ca-certificates:default\fR, or if the administrator refreshes the service.
-The service scans for root certificates in PEM format under /etc/certs and creates symbolic
+The service scans for root certificates in PEM format under /etc/certs/CA and creates symbolic
 links from /etc/openssl/certs/ to the files.
 It also generates a fresh /etc/curl/curlCA file, by concatenating the certificates.
 
@@ -37,7 +37,7 @@ svcadm refresh svc:/system/ca-certificates:default
 .sp
 .ne 2
 .na
-\fB\fB/etc/certs/*.pem\fR\fR
+\fB\fB/etc/certs/CA/*.pem\fR\fR
 .ad
 .sp
 .ne 2
