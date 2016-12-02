@@ -10,6 +10,9 @@
     <exec_method name='start' type='method' exec='/lib/svc/method/svc-cacert' timeout_seconds='60'/>
     <exec_method name='refresh' type='method' exec='/lib/svc/method/svc-cacert' timeout_seconds='60'/>
     <exec_method name='stop' type='method' exec=':true' timeout_seconds='60'/>
+    <property_group name='startd' type='framework'>
+      <propval name='duration' type='astring' value='transient'/>
+    </property_group>
     <stability value='Unstable'/>
     <template>
       <common_name>
