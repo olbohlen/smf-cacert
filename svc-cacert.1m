@@ -1,0 +1,58 @@
+'\" te
+.\" Copyright (c) 2016 Olaf Bohlen
+.\" The contents of this file are subject to the terms of the Common Development and Distribution License (the "License").  You may not use this file except in compliance with the License.
+.\" You can obtain a copy of the license at usr/src/OPENSOLARIS.LICENSE or http://www.opensolaris.org/os/licensing.  See the License for the specific language governing permissions and limitations under the License.
+.\" When distributing Covered Code, include this CDDL HEADER in each file and include the License file at usr/src/OPENSOLARIS.LICENSE.  If applicable, add the following below this CDDL HEADER, with the fields enclosed by brackets "[]" replaced with your own identifying information: Portions Copyright [yyyy] [name of copyright owner]
+
+.TH SVC-CACERT 1M "2 Dec 2016" "" "System Administration Commands"
+.SH NAME
+svc-cacert \- generates Root CA Certificate entries for openssl and curl
+.SH SYNOPSIS
+.LP
+.nf
+\fB/lib/svc/method/svc-cacert\fR
+.fi
+
+.SH DESCRIPTION
+.sp
+.LP
+\fBsvc-cacert\fR will be executed during systemboot by the \fBsmf\fR(5) service 
+\fBsvc:/system/ca-certificates:default\fR, or if the administrator refreshes the service.
+The service scans for root certificates in PEM format under /etc/certs and creates symbolic
+links from /etc/openssl/certs/ to the files.
+It also generates a fresh /etc/curl/curlCA file, by concatenating the certificates.
+
+.SH EXAMPLES
+.LP
+\fBExample \fR generate new root CA bundle
+.sp
+.in +2
+.nf
+svcadm refresh svc:/system/ca-certificates:default
+.fi
+.in -2
+.sp
+
+.SH FILES
+.sp
+.ne 2
+.na
+\fB\fB/etc/certs/*.pem\fR\fR
+.ad
+.sp
+.ne 2
+.na
+\fB\fB/etc/curl/curlCA\fR\fR
+.ad
+.sp
+.ne 2
+.na
+\fB\fB/etc/openssl/certs/*.0\fR\fR
+.ad
+.sp .6
+
+.SH SEE ALSO
+.sp
+.LP
+\fBsmf\fR(5), \fBsvccfg\fR(1M), \fBcurl\fR(1), \fBopenssl\fR(1openssl)
+
