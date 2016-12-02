@@ -1,0 +1,16 @@
+set name=pkg.fmri value=pkg://openindiana.org/system/management/smf-cacert@0.0.1,0.1
+set name=pkg.description value="service that generates rootCA bundles"
+set name=pkg.summary value="System administration applications"
+set name=info.classification value="org.opensolaris.category.2008:System/Administration and Configuration"
+set name=variant.arch value=i386
+
+<transform file dir -> default owner root>
+<transform file dir path=etc -> edit group bin sys>
+<transform file dir path=usr -> edit group bin sys>
+<transform file dir path=^usr/share/man -> edit group sys bin>
+<transform file dir path=lib/svc/manifest -> edit group bin sys>
+<transform file path=lib/svc/method/svc-cacert -> edit mode 0644 0754>
+<transform file path=lib/svc/method/svc-cacert -> edit group bin sys>
+<transform file path=lib/svc/method/smf-cacert.xml -> edit group bin sys>
+<transform file path=lib/svc/method/smf-cacert.xml -> edit mode 0644 0444>
+<transform set name=pkg.fmri -> edit value pkg://[^/]+/ pkg://openindiana.org/>
