@@ -13,6 +13,12 @@
     <property_group name='startd' type='framework'>
       <propval name='duration' type='astring' value='transient'/>
     </property_group>
+    <property_group name='config' type='application'>
+      <propval name='capath' type='astring' value='/etc/certs/CA'/>
+      <propval name='cabundle' type='astring' value='/etc/certs/ca-certificates.crt'/>
+      <propval name='opensslcerts' type='astring' value='/etc/openssl/certs'/>
+    </property_group>
+
     <stability value='Unstable'/>
     <template>
       <common_name>
