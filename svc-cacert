@@ -64,14 +64,14 @@ if [ "x${capath}" == "x" ]; then
 fi
 
 # get the cabundle file name by SMF
-cabundle=$(svcprop -p config/cabundle)
+cabundle=$(svcprop -p config/cabundle ${SMF_FMRI})
 # if unset, set default
 if [ "x${cabundle}" == "x" ]; then
     cabundle=/etc/certs/ca-certificates.crt
 fi
 
 # get a openssl cert dir by SMF
-osslcerts=$(svcprop -p config/opensslcerts)
+osslcerts=$(svcprop -p config/opensslcerts ${SMF_FMRI})
 if [ "x${osslcerts}" == "x" ]; then
     osslcerts=/etc/openssl/certs
 fi
